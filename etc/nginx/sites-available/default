@@ -55,7 +55,7 @@ server {
                 ## message to the client
                 #if ($ssl_client_verify != SUCCESS) {
                 #        return 403;
-                #}
+                }
 
 		root /run/shm;
 	}
