@@ -51,10 +51,11 @@ server {
   
         access_log /var/log/nginx/yourdomain.nl;
         location /hls {
-                # message to the client
-                if ($ssl_client_verify != SUCCESS) {
-                        return 403;
-                }
+                #THIS PART: Player fails in android chrome if this is uncommented
+                ## message to the client
+                #if ($ssl_client_verify != SUCCESS) {
+                #        return 403;
+                #}
 
 		root /run/shm;
 	}
