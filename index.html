@@ -9,7 +9,7 @@
             background: black;
             text-align: center;
         }
-        
+
         #player {
             margin: 0 auto;
         }
@@ -17,8 +17,12 @@
 </head>
 
 <body>
-    <video id="player" preload="auto" controls class="video-js vjs-default-skin"></video>
-
+<!--    <video id="player" preload="auto" controls class="video-js vjs-default-skin"></video>-->
+    <video-js id="player" width=600 height=300 class="vjs-default-skin" controls>
+      <source
+         src="https://jelmervanamen.nl/hls/index.m3u8"
+         type="application/x-mpegURL">
+    </video-js>
     <script src="vendor/promise.min.js"></script>
     <script src="vendor/fetch.js"></script>
     <script src="https://vjs.zencdn.net/7.4.1/video.min.js"></script>
@@ -36,21 +40,15 @@
                     streamUrl = streamUrl.substr(1);
                 }
 
-                streamUrl = location.protocol 
-                    + '//' 
-                    + location.hostname 
-                    + (location.port ? ':' + location.port : '') 
-                    + '/' 
+                streamUrl = location.protocol
+                    + '//'
+                    + location.hostname
+                    + (location.port ? ':' + location.port : '')
+                    + '/'
                     + streamUrl;
             }
 
             var parameters = {
-                sources: [
-                    {
-                        src: streamUrl,
-                        type: 'application/x-mpegURL'
-                    }
-                ],
                 aspectRatio: "16:9",
                 fluid: true,
                 techOrder: ['html5']
@@ -58,11 +56,6 @@
 
             // Configure videojs
             var player = videojs('player', parameters);
-            player.src({
-                src: streamUrl,
-                type: 'application/x-mpegURL',
-                overrideNative: true
-            })
             player.play();
         });
     </script>
