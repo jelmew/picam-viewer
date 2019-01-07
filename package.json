@@ -18,5 +18,8 @@
   "homepage": "https://github.com/kamranayub/picam-viewer#readme",
   "devDependencies": {
     "serve": "^6.2.0"
+  },
+  "dependencies": {
+    "video.js": "^7.4.1"
   }
 }
